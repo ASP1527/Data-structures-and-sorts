@@ -5,4 +5,5 @@ public interface IStack<E> {
     public boolean isEmpty();
     public boolean push(E element);
     public E pop();    
+    public E top();    
 }

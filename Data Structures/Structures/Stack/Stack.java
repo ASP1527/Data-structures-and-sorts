@@ -11,7 +11,7 @@ public class Stack<E> implements IStack<E> {
     /**
      * Constructor method for the stack. 
      *
-     * @param s   the input array to sort
+     * @param s   the size
      */
     public Stack(int s) {
         // sets top to -1 & creates an array of size given by user

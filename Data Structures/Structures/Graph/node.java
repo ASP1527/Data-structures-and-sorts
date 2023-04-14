@@ -23,17 +23,37 @@ public class node<E> {
         }
     }
     
-    public boolean add(Object o) {
+    public boolean add(Object v) {
         if (this.size == this.adjacent.length) {
             resize();
         }
-        adjacent[size] = o;
-        size ++;
+        this.adjacent[this.size] = v;
+        this.size ++;
         return true;
     }
 
     public Object[] getAdjacent(){
         return this.adjacent;
+    }
+
+    public void removeEdge(Object v) {
+        for (int i=0; i < this.adjacent.length; i++) {
+            if (this.adjacent[i] == v) {
+                Object[] temp = this.adjacent;
+                this.adjacent = new Object[this.size];
+                this.size --;
+                int count = 0;
+                for (int j=0; j < temp.length; j++) {
+                    if (temp[j] == v) {
+                        continue;
+                    } else {
+                        this.adjacent[count] = temp[j];
+                        count ++;
+                    }
+                }
+                break;
+            }
+        }
     }
 
     public static void main(String[] args) {

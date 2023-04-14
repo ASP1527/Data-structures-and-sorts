@@ -44,12 +44,42 @@ public class graph <E> {
         return nodes;
     }
 
+    public int degree(E n) {
+        for (int i=0; i < nodes.length; i++) {
+            if (nodes[i].getValue() == n) {
+                return nodes[i].getAdjacent().length;
+            }
+        }
+        return -1;
+    }
+
+    public void removeVertex(Object v) {
+        for (int i=0; i < nodes.length; i++) {
+            nodes[i].removeEdge(v); 
+        }
+    }
+
     public static void main(String[] args) {
         graph g = new graph<>();
         g.addNode("A");
         g.addNode("B");
-        g.addVertex("A", "B", 5);
         node[] n = g.getNodes();
+        for (node a: n) {
+            System.out.println(a.getValue());
+            for (Object b: a.getAdjacent()) {
+                System.out.println(b);
+            }
+        }
+        g.addVertex("A", "B", 5);
+        n = g.getNodes();
+        for (node a: n) {
+            System.out.println(a.getValue());
+            for (Object b: a.getAdjacent()) {
+                System.out.println(b);
+            }
+        }
+        g.removeVertex(5);
+        n = g.getNodes();
         for (node a: n) {
             System.out.println(a.getValue());
             for (Object b: a.getAdjacent()) {
